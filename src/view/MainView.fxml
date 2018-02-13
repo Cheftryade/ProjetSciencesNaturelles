@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="465.0" prefWidth="601.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainController">
+    <top>
+        <MenuBar prefWidth="793.0" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <center>
+        <HBox fx:id="idHbox" prefHeight="440.0" prefWidth="590.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox prefHeight="347.0" prefWidth="383.0">
+                    <children>
+                        <LineChart fx:id="LineChart" title="Evolution">
+                            <xAxis>
+                                <NumberAxis side="BOTTOM" fx:id="xAxis" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="yAxis" side="LEFT" />
+                            </yAxis>
+                        </LineChart>
+                        <ProgressBar fx:id="prog" prefHeight="28.0" prefWidth="361.0" progress="0.0">
+                            <padding>
+                                <Insets bottom="10.0" left="30.0" />
+                            </padding>
+                        </ProgressBar>
+                        <ProgressIndicator fx:id="progInd" prefHeight="63.0" prefWidth="383.0" progress="0.0" />
+                    </children>
+                </VBox>
+                <VBox prefHeight="347.0" prefWidth="216.0">
+                    <children>
+                        <TableView fx:id="tabView" prefHeight="351.0" prefWidth="301.0">
+                            <columns>
+                                <TableColumn fx:id="columnTime" prefWidth="106.0" text="Temps" />
+                                <TableColumn fx:id="columnTempOne" prefWidth="107.0" text="Valeur" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="printBtn" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Imprimer">
+                            <VBox.margin>
+                                <Insets left="75.0" top="30.0" />
+                            </VBox.margin>
+                        </Button>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </center>
+</BorderPane>
