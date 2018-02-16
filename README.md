@@ -1,9 +1,10 @@
 # Projet Sciences Naturelles
 ## Introduction
-<p style="text-align: center;">
+<center>
 Projet Sciences Naturelles est une application permettant d'observer la variation de l'humidité dans l'air dû à la transpiration d'une plante.
 Cette application est réalisée dans le cadre d'un projet de Master 1 Informatique, basé sur l'utilisation de la méthode Agile Scrum.
-</p>
+</center>
+
 ## L'équipe
 * Biardeau Tristan __[Scrum Master]__
 * Guenver Yann
