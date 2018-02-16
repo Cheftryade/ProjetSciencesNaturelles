@@ -14,8 +14,3 @@ Cette application est réalisée dans le cadre d'un projet de Master 1 Informati
 
 ## Prérequis
 Il est fortement recommander de disposer, au minimum, de JavaSE 8(121).
-
-## Exécution
-Pour lancer l'application, lancer simplement le fichier .jar executable suivant :
-
-> test.jar
