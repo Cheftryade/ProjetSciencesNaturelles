@@ -1,7 +1,6 @@
 package controller;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.Optional;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -16,33 +15,22 @@ import javafx.print.PrinterAttributes;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
 import javafx.scene.transform.Scale;
 import model.ModelData;
 
 
 public class MainController {
 
+    /*Récupération des éléments placés sur l'interface graphique sous forme FXML*/
     @FXML
-    private HBox idHbox;
-
-    @FXML
-    private LineChart<?, ?> LineChart;
-
-    @FXML
-    private NumberAxis xAxis;
-
-    @FXML
-    private NumberAxis yAxis;
+    private LineChart LineChart;
 
     @FXML
     protected TableView<ModelData> tabView;
@@ -59,10 +47,12 @@ public class MainController {
     @FXML
     private Button printBtn;
 
-    private XYChart.Series series = new XYChart.Series<>();;
+    private XYChart.Series series = new XYChart.Series<>();
 
+    /*Permet de connaitre dans le "platform.runlater" la valeur i de la boucle for*/
     private int iNumber = 0;
 
+    /*Les données de ModelData sont listé dans une liste observable*/
     private ObservableList<ModelData> dataList = FXCollections.observableArrayList();
 
     public ObservableList<ModelData> getData() {
@@ -73,12 +63,17 @@ public class MainController {
         @Override
         public void run() {
             double temps = WelcomeController.getTemps();
+
             for(int i = 0; i < temps+1.0; i++){
                 prog.setProgress(i/temps);
                 progInd.setProgress(i/temps);
+
+                /*Pour le moment, remplis toutes les 5 secondes le tableau et le graphique avec une valeur calculé prédéfinie*/
                 if(i%5 == 0 && i!= 0){
                     iNumber = i;
                     tabView.getItems().removeAll(getData());
+
+                    /*Obligatoire, sinon ne s'effectue pas dans le bon thread*/
                     Platform.runLater(
                             () -> {
                                 series.getData().add(new XYChart.Data(iNumber, iNumber*5.0));
@@ -88,12 +83,15 @@ public class MainController {
                     tabView.getItems().addAll(getData());
                 }
                 try {
-                    Thread.sleep(100);
+                    /*Permet le traitement seconde par seconde*/
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
+            /*Une fois le temps écoulé, on peut afficher le bouton d'impression*/
+            /*A retirer pour correspondre au besoin client*/
             printBtn.setDisable(false);
         }
 
@@ -101,11 +99,16 @@ public class MainController {
 
     @FXML
     private void initialize() {
+
+        /*Retire le rond rouge sous le graphe*/
         LineChart.setLegendVisible(false);
+
         LineChart.getData().add(series);
         prog.setProgress(0.0);
         progInd.setProgress(0.0);
         printBtn.setDisable(true);
+
+        /*Définit dans quel colonne doit se trouver les différentes données de ModelData*/
         columnTime.setCellValueFactory(new PropertyValueFactory<>("Temps"));
         columnTempOne.setCellValueFactory(new PropertyValueFactory<>("Valeur"));
         tabView.getItems().addAll(getData());

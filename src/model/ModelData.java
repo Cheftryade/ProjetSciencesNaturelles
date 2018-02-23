@@ -3,6 +3,7 @@ package model;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+/*Type de données récupérés et affichés sous forme de graphe / tableau*/
 public class ModelData {
 
     private final SimpleIntegerProperty  time ;
