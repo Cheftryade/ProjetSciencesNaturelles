@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="568.0" prefWidth="473.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Protocolesouhaite1Controller">
+   <children>
+      <FlowPane prefHeight="558.0" prefWidth="467.0">
+         <children>
+            <BorderPane prefHeight="112.0" prefWidth="469.0">
+               <top>
+                  <Label prefHeight="72.0" prefWidth="278.0" text="Veuillez entrer le nom de la plante utilisée" BorderPane.alignment="CENTER" />
+               </top>
+               <bottom>
+                  <TextField maxHeight="40.0" maxWidth="200.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+               </bottom>
+            </BorderPane>
+            <BorderPane prefHeight="106.0" prefWidth="463.0">
+               <top>
+                  <Label prefHeight="107.0" prefWidth="433.0" text="Détermination de la teneur en eau de l'air à l'entrée de l'enceinte" BorderPane.alignment="CENTER" />
+               </top>
+            </BorderPane>
+            <AnchorPane prefHeight="114.0" prefWidth="468.0">
+               <children>
+                  <Button layoutX="35.0" layoutY="14.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="157.0" text="Oui" textFill="#fc1e1e" />
+                  <Button layoutX="265.0" layoutY="14.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="157.0" text="Non" textFill="#fc1e1e" />
+               </children>
+            </AnchorPane>
+         </children>
+      </FlowPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="ProjetSciencesNaturellesgit.jnlp">
+  <information>
+    <title>ProjetSciencesNaturellesgit</title>
+    <vendor>asus</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="ProjetSciencesNaturellesgit.jar" size="14297" download="eager" />
+    <jar href="lib\jrxtx-0.0.1.jar" size="79771" download="eager" />
+    <jar href="lib\jssc.jar" size="152500" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="ProjetSciencesNaturellesgit" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="application.Main"  name="ProjetSciencesNaturellesgit" />
+  <update check="always"/>
+</jnlp>

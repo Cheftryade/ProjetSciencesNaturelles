@@ -3,19 +3,26 @@ package controller;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class WelcomeController {
 
-    /*Récupération des éléments placés sur l'interface graphique sous forme FXML*/
+    private static String nom;
     @FXML
     private TextField fieldTime;
 
@@ -23,8 +30,11 @@ public class WelcomeController {
     private TextField fieldName;
 
     private static double temps = 0;
+    @FXML
+    private TextField fieldTimeinterval;
+    
+     private static double itervalTemps = 0;
 
-    /*Méthode créant une page d'erreur avec le message donné en paramètre*/
     public void dialog(String message){
         Alert alert = new Alert(AlertType.ERROR);
         alert.setTitle("Une erreur est survenue");
@@ -35,20 +45,23 @@ public class WelcomeController {
 
 
     @FXML protected void handleSubmitButtonAction(ActionEvent event) {
-
-        /*Vérification de la cohérence des informations de l'utilisateur*/
         if(fieldName.getText().isEmpty()){
             dialog("Veuillez indiquer votre nom !");
             return;
         }
+        nom=fieldName.getText();
         try{
             temps = Double.parseDouble(fieldTime.getText());
         }catch(NumberFormatException nfe){
-            dialog("Veuillez indiquer une valeur numérique dans le champs, et non autre chose");
+            dialog("Veuillez indiquer une valeur num�rique dans le champs, et non autre chose");
             return;
         }
-
-        /*Création du nouveau Stage -> vue principale*/
+        try{
+            itervalTemps = Double.parseDouble(fieldTimeinterval.getText());
+        }catch(NumberFormatException nfe){
+            dialog("Veuillez indiquer une valeur num�rique dans le champs, et non autre chose");
+            return;
+        }
         Stage stage = new Stage();
         stage.setTitle("TP Sciences Nat Nom : " + fieldName.getText());
         Pane myPane = null;
@@ -71,5 +84,10 @@ public class WelcomeController {
         return temps;
     }
 
-
+public static double getIntervalTemps(){
+        return itervalTemps;
+    }
+public static String getName(){
+        return nom;
+    }
 }
